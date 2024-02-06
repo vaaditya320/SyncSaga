@@ -1,0 +1,53 @@
+<!-- stories/templates/stories/view-story-changes.html -->
+{% extends 'base.html' %}
+
+{% block title %}SyncSaga - View Story Changes{% endblock %}
+
+{% block start %}
+    <!-- Content for viewing changes made to a story -->
+    <div class="container mt-4">
+        <h2 class="text-white">View Story Changes - {{ story.title }}</h2>
+        <p class="text-white">Changes made to the story over time:</p>
+
+        <table class="custom-table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Modified By</th>
+                    <th scope="col">Modified Content</th>
+                    <th scope="col">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for branch in branches %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ branch.branched_by.username }}</td>
+                        <td>{{ branch.modified_content }}</td>
+                        <td>{{ branch.timestamp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        /* Additional styles specific to view-story-changes.html */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #663399; /* Rebecca Purple */
+            text-align: center;
+        }
+
+        th {
+            background-color: #663399; /* Rebecca Purple */
+            color: #fff;
+        }
+    </style>
+{% endblock %}

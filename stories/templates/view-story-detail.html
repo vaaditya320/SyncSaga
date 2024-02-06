@@ -1,0 +1,29 @@
+<!-- stories/templates/stories/view-story-detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}SyncSaga - View Story{% endblock %}
+
+{% block start %}
+    <!-- Content for viewing a specific story -->
+    <div class="container mt-4">
+        <h2 class="text-white">{{ story.title }}</h2>
+        
+        <p class="text-white">{{ story.content }}</p>
+    </div>
+
+    <style>
+        /* Additional styles specific to view-story-detail.html */
+        body {
+            background-color: #9370DB; /* Medium Purple */
+        }
+
+        .container {
+            color: #fff; /* White text */
+            margin-top: 50px;
+        }
+
+        h2, p {
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}

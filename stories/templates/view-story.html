@@ -1,0 +1,76 @@
+<!-- stories/templates/stories/view-story.html -->
+{% extends 'base.html' %}
+
+{% block title %}SyncSaga - View Stories{% endblock %}
+
+{% block start %}
+    <!-- Content for viewing all stories in a table -->
+    <div class="container mt-4">
+        <h2 class="text-white">View Stories</h2>
+        <table class="custom-table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for story in stories %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{% url 'view_story_detail' story.id %}" class="text-white text-decoration-none">{{ story.title }}</a></td>
+                        <td>{{ story.description }}</td>
+                        <td>
+                            <a href="{% url 'view_story_detail' story.id %}" class="btn btn-outline-info btn-sm">View</a>
+                            <a href="{% url 'update_story_branch' story.id %}" class="btn btn-outline-warning btn-sm">Update</a>
+                            <a href="{% url 'view_story_changes' story.id %}" class="btn btn-outline-secondary btn-sm">View Changes</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Additional styles specific to view-story.html -->
+    <style>
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #663399; /* Rebecca Purple */
+            text-align: center;
+        }
+
+        th {
+            background-color: #663399; /* Rebecca Purple */
+            color: #fff;
+        }
+
+        .text-info {
+            text-decoration: none;
+            color: cyan; /* Green */
+            font-weight: bold;
+        }
+
+        .btn-outline-info, .btn-outline-warning, .btn-outline-secondary {
+            margin-right: 5px;
+        }
+
+        .btn-outline-info {
+            border: 1px solid cyan; /* Green */
+            color: cyan;
+            background-color: #9370db;
+        }
+
+        .btn-outline-info:hover {
+            background-color: cyan; /* Green */
+            color: #fff;
+        }
+    </style>
+{% endblock %}

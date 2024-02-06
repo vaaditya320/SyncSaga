@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}SyncSaga - Dashboard{% endblock %}
+
+{% block start %}
+    <!-- Additional content for the dashboard -->
+    <div class="container mt-4">
+        <h2>Welcome, {{ first_name }}!</h2>
+        <p>Explore and enjoy the whimsical wonders of SyncSaga.</p>
+
+        <!-- Buttons for creating and viewing stories -->
+        <div class="btn-container">
+            <a href="{% url "create_story" %}" class="btn">Create Story</a>
+            <a href="{% url "view_story" %}" class="btn">View All Stories</a>
+        </div>
+    </div>
+    <style>
+        .container {
+            color: #fff; /* White text */
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn-container a {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .btn-container a.btn {
+            background-color: #663399; /* Rebecca Purple */
+            color: #fff;
+            padding: 12px 20px;
+            border: 2px solid #663399; /* Matching border color */
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease; /* Added transition effect */
+        }
+
+        .btn-container a.btn:hover {
+            background-color: #8A2BE2; /* Hover color: Blue Violet */
+        }
+    </style>
+{% endblock %}

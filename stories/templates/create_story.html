@@ -1,0 +1,88 @@
+<!-- stories/templates/stories/create_story.html -->
+{% extends 'base.html' %}
+
+{% block title %}SyncSaga - Create Story{% endblock %}
+
+{% block start %}
+<div class="container mt-4 pb-5">
+    <h2 class="text-white">Create a New Story</h2>
+    <div class="card mt-4">
+        <div class="card-body">
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-label text-white">Title:</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please provide a title.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label text-white">Description:</label>
+                    <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+                    <div class="invalid-feedback">
+                        Please provide a description.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="content" class="form-label text-white">Content:</label>
+                    <textarea id="content" name="content" class="form-control" rows="8" required></textarea>
+                    <div class="invalid-feedback">
+                        Please provide content.
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Story</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .card {
+        background-color: #D8BFD8; /* Thistle */
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        color: #663399; /* Rebecca Purple */
+    }
+
+    .btn-primary {
+        background-color: #663399; /* Rebecca Purple */
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #8A2BE2; /* Blue Violet */
+    }
+</style>
+
+<script>
+    // JavaScript for form validation using Bootstrap classes
+    (function () {
+        'use strict';
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation');
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+
+{% endblock %}
